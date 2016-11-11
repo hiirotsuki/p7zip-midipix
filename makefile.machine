@@ -1,8 +1,5 @@
-#
-# makefile for Linux (x86, PPC, alpha ...)
-#
 
-OPTFLAGS=-O -s
+OPTFLAGS=-O0 -g3
 
 ALLFLAGS=${OPTFLAGS} -pipe \
     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
@@ -10,14 +7,15 @@ ALLFLAGS=${OPTFLAGS} -pipe \
 	-D_7ZIP_LARGE_PAGES \
 	$(LOCAL_FLAGS)
 
-CXX=g++
-CC=gcc
-CC_SHARED=-fPIC
-LINK_SHARED=-fPIC -shared
+CXX=x86_64-nt64-midipix-g++
+CC=x86_64-nt64-midipix-gcc
+CC_SHARED=
+LINK_SHARED=-shared
+
+PRE_COMPILED_HEADER=StdAfx.h.gch
 
 LOCAL_LIBS=-lpthread
 LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
 
 OBJ_CRC32=$(OBJ_CRC32_C)
 OBJ_AES=
-
